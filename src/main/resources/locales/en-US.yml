@@ -1,0 +1,12 @@
+protection:
+  flags:
+    creeper_explosion:
+      name: Creeper explosion
+      description: |-
+        &aToggle whether the creeper
+        &aexplosions can break blocks or not.
+    wither_explosion:
+      name: Wither explosion
+      description: |-
+        &aToggle whether the wither
+        &aexplosions can break blocks or not.

@@ -1,0 +1,8 @@
+protection:
+  flags:
+    creeper_explosion:
+      name: 苦力怕爆炸
+      description: 切換苦力怕爆炸是否可以破壞方塊。
+    wither_explosion:
+      name: 凋零爆炸
+      description: 切換凋零爆炸是否可以破壞方塊。

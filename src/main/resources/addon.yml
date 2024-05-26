@@ -1,0 +1,10 @@
+name: MoreFlags
+main: me.mmmjjkx.bbox.moreflags.MoreFlagsAddon
+version: 1.0.0
+api-version: 1.15.4
+authors: mmmjjkx
+description: Adds more flags to the game mode addon.
+permissions:
+  'moreflags.*':
+    description: Gives access to all 'MoreFlags' flags.
+    default: true

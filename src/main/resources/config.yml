@@ -1,0 +1,9 @@
+flags:
+  creeper_explosion:
+    enabled: true
+    change-cooldown: 0
+    default-value: false
+  wither_explosion:
+    enabled: true
+    change-cooldown: 0
+    default-value: false
