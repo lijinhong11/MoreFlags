@@ -6,3 +6,6 @@ protection:
     wither_explosion:
       name: 凋零爆炸
       description: 切換凋零爆炸是否可以破壞方塊。
+    phantom_spawning:
+      name: 幻翼生成
+      description: 切換幻翼是否可以生成。

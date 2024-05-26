@@ -15,4 +15,8 @@ public class Settings implements ConfigObject {
     @ConfigEntry(path = "flags.wither_explosion")
     @ConfigComment("It can control wither explosions.")
     private FlagSet witherExplosions = new FlagSet();
+
+    @ConfigEntry(path = "flags.phantom_spawning")
+    @ConfigComment("It can control phantom spawning.")
+    private FlagSet phantomSpawning = new FlagSet();
 }

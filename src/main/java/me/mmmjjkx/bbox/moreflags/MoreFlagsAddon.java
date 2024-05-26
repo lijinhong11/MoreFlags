@@ -25,9 +25,13 @@ public class MoreFlagsAddon extends Addon {
         EntityListener entityListener = new EntityListener(settings);
 
         registerListener(entityListener);
-
-        registerFlag(convertToFlag(FlagNames.CREEPER_EXPLOSION, Material.CREEPER_HEAD, settings.getCreeperExplosions(), entityListener));
-        registerFlag(convertToFlag(FlagNames.WITHER_EXPLOSION, Material.WITHER_SKELETON_SKULL, settings.getWitherExplosions(), entityListener));
+        registerFlags(entityListener);
+    }
+    
+    private void registerFlags(EntityListener entityListener) {
+        registerFlagSet(FlagNames.CREEPER_EXPLOSION, Material.CREEPER_HEAD, settings.getCreeperExplosions(), entityListener);
+        registerFlagSet(FlagNames.WITHER_EXPLOSION, Material.WITHER_SKELETON_SKULL, settings.getWitherExplosions(), entityListener);
+        registerFlagSet(FlagNames.PHANTOM_SPAWNING, Material.PHANTOM_SPAWN_EGG, settings.getPhantomSpawning(), entityListener);
     }
 
     @Override
@@ -43,13 +47,17 @@ public class MoreFlagsAddon extends Addon {
     public void onDisable() {
     }
 
-    private Flag convertToFlag(String id, Material icon, FlagSet flagSet, Listener listener) {
-        Flag.Builder builder = new Flag.Builder(id, icon);
-        return builder.addon(this)
-                .defaultSetting(flagSet.getDefaultValue())
-                .listener(listener)
-                .type(Flag.Type.SETTING)
-                .cooldown(flagSet.getChangeCooldown())
-                .build();
+    private void registerFlagSet(String id, Material icon, FlagSet flagSet, Listener listener) {
+        if (flagSet.isEnabled()) {
+            Flag.Builder builder = new Flag.Builder(id, icon);
+            Flag flag = builder.addon(this)
+                    .mode(Flag.Mode.EXPERT)
+                    .listener(listener)
+                    .type(Flag.Type.SETTING)
+                    .defaultSetting(flagSet.getDefaultValue())
+                    .cooldown(flagSet.getChangeCooldown())
+                    .build();
+            registerFlag(flag);
+        }
     }
 }

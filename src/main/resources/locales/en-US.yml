@@ -10,3 +10,8 @@ protection:
       description: |-
         &aToggle whether the wither
         &aexplosions can break blocks or not.
+    phantom_spawning:
+      name: Phantom spawning
+      description: |-
+        &aToggle whether phantoms can be
+        &aspawned or not.
