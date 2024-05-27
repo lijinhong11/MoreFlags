@@ -1,0 +1,30 @@
+name: Flag add
+description: Add a new flag.
+title: "[New flag]: "
+labels: ["flag add"]
+assignees:
+  - lijinhong11
+body:
+  - type: textarea
+    id: contact
+    attributes:
+      label: Flag information
+      description: Please input what does the flag control.
+    validations:
+      required: true
+  - type: input
+    id: logs
+    attributes:
+      label: Flag name
+      description: Please input the name of the flag.
+    validations:
+      required: true
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Checks
+      options:
+        - label: I am SURE that the flag is not a duplicate of an existing flag.
+          required: true
+        - label: I am SURE that there are no duplicate issues here.
+          required: true
