@@ -7,3 +7,7 @@ flags:
     enabled: true
     change-cooldown: 0
     default-value: false
+  phantom_spawning:
+    enabled: true
+    change-cooldown: 0
+    default-value: false

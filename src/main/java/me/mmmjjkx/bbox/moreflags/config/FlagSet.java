@@ -11,9 +11,9 @@ public class FlagSet {
     private boolean enabled = true;
     @Getter
     @ConfigEntry(path = "change-cooldown")
-    private int changeCooldown;
+    private int changeCooldown = 0;
     @ConfigEntry(path = "default-value")
-    private boolean defaultValue;
+    private boolean defaultValue = false;
 
     public boolean getDefaultValue() {
         return defaultValue;
