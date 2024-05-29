@@ -6,21 +6,21 @@ assignees:
   - lijinhong11
 body:
   - type: textarea
-    id: contact
+    id: flag_info
     attributes:
       label: Flag information
       description: Please input what does the flag control.
     validations:
       required: true
   - type: input
-    id: logs
+    id: flag_name
     attributes:
       label: Flag name
       description: Please input the name of the flag.
     validations:
       required: true
   - type: checkboxes
-    id: terms
+    id: checks
     attributes:
       label: Checks
       options:
