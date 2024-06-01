@@ -2,10 +2,10 @@ protection:
   flags:
     creeper_explosion:
       name: 苦力怕爆炸
-      description: 切換苦力怕爆炸是否可以破壞方塊。
+      description: 切換是否防止苦力怕爆炸可以破壞方塊。
     wither_explosion:
-      name: 凋零爆炸
-      description: 切換凋零爆炸是否可以破壞方塊。
+      name: 雕零爆炸
+      description: 切換是否防止雕零爆炸破壞方塊。
     phantom_spawning:
       name: 幻翼生成
-      description: 切換幻翼是否可以生成。
+      description: 切換是否防止幻翼生成。

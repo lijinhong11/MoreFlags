@@ -4,14 +4,14 @@ protection:
       name: Creeper explosion
       description: |-
         &aToggle whether the creeper
-        &aexplosions can break blocks or not.
+        &aexplosions can‘t break blocks or not.
     wither_explosion:
       name: Wither explosion
       description: |-
         &aToggle whether the wither
-        &aexplosions can break blocks or not.
+        &aexplosions can't break blocks or not.
     phantom_spawning:
       name: Phantom spawning
       description: |-
-        &aToggle whether phantoms can be
+        &aToggle whether phantoms can't be
         &aspawned or not.

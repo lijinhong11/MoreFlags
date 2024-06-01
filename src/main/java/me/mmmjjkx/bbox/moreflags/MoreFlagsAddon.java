@@ -19,6 +19,7 @@ public class MoreFlagsAddon extends Addon {
         saveDefaultConfig();
 
         settings = new Config<>(this, Settings.class).loadConfigObject();
+
         Settings save = new Settings();
         new Config<>(this, Settings.class).saveConfigObject(save);
 
