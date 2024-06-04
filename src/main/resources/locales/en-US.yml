@@ -1,17 +1,11 @@
 protection:
   flags:
     creeper_explosion:
-      name: Creeper explosion
-      description: |-
-        &aToggle whether the creeper
-        &aexplosions can‘t break blocks or not.
+      name: Creeper explosions
+      description: "&aAllow &7/ &c Prevent &acreeper explosions destroying blocks"
     wither_explosion:
-      name: Wither explosion
-      description: |-
-        &aToggle whether the wither
-        &aexplosions can't break blocks or not.
+      name: Wither explosions
+      description: "&aAllow &7/ &c Prevent &awither explosions destroying blocks"
     phantom_spawning:
       name: Phantom spawning
-      description: |-
-        &aToggle whether phantoms can't be
-        &aspawned or not.
+      description: "&aAllow &7/ &c Prevent &aphantoms spawning"

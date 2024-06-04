@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import world.bentobox.bentobox.api.configuration.*;
 
-@StoreAt(filename = "config.yml", path = "flags")
+@StoreAt(filename = "config.yml")
 @Getter
 @Setter
 public class Settings implements ConfigObject {

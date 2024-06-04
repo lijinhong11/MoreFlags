@@ -31,12 +31,12 @@ public class EntityListener implements Listener {
         EntityType et = en.getType();
         switch (et) {
             case CREEPER -> {
-                if (settings.getCreeperExplosions().isEnabled() && inIsland(en, FlagNames.CREEPER_EXPLOSION)) {
+                if (settings.getCreeperExplosions().isEnabled() && !inIsland(en, FlagNames.CREEPER_EXPLOSION, true)) {
                     e.setCancelled(true);
                 }
             }
             case WITHER -> {
-                if (settings.getWitherExplosions().isEnabled() && inIsland(en, FlagNames.WITHER_EXPLOSION)) {
+                if (settings.getWitherExplosions().isEnabled() && !inIsland(en, FlagNames.WITHER_EXPLOSION, true)) {
                     e.setCancelled(true);
                 }
             }
@@ -48,22 +48,21 @@ public class EntityListener implements Listener {
         Entity en = e.getEntity();
         EntityType et = en.getType();
         if (et == EntityType.PHANTOM) {
-            if (settings.getPhantomSpawning().isEnabled() && inIsland(en, FlagNames.PHANTOM_SPAWNING)) {
+            if (settings.getPhantomSpawning().isEnabled() && !inIsland(en, FlagNames.PHANTOM_SPAWNING, true)) {
                 e.setCancelled(true);
             }
         }
     }
 
-    private boolean inIsland(Entity en, String id) {
+    private boolean inIsland(Entity en, String id, boolean destExpression) {
         IslandsManager im = BentoBox.getInstance().getIslands();
         Optional<Island> island = im.getIslandAt(en.getLocation());
-        if (island.isPresent()) {
-            FlagsManager fm = BentoBox.getInstance().getFlagsManager();
-            Optional<Flag> flag = fm.getFlag(id);
-            if (flag.isPresent()) {
-                return island.get().isAllowed(flag.get());
-            }
+        FlagsManager fm = BentoBox.getInstance().getFlagsManager();
+        Optional<Flag> flag = fm.getFlag(id);
+        if (flag.isPresent()) {
+            Flag f = flag.get();
+            return island.map(value -> value.isAllowed(f) == destExpression).orElseGet(() -> f.isSetForWorld(en.getWorld()));
         }
-        return false;
+        return destExpression;
     }
 }

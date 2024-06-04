@@ -25,7 +25,6 @@ public class MoreFlagsAddon extends Addon {
 
         EntityListener entityListener = new EntityListener(settings);
 
-        registerListener(entityListener);
         registerFlags(entityListener);
     }
     
@@ -40,6 +39,7 @@ public class MoreFlagsAddon extends Addon {
         super.onReload();
 
         settings = new Config<>(this, Settings.class).loadConfigObject();
+
         Settings save = new Settings();
         new Config<>(this, Settings.class).saveConfigObject(save);
     }
@@ -59,6 +59,8 @@ public class MoreFlagsAddon extends Addon {
                     .cooldown(flagSet.getChangeCooldown())
                     .build();
             registerFlag(flag);
+
+            flag.setDefaultSetting(flagSet.getDefaultValue());
         }
     }
 }

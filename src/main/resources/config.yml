@@ -2,12 +2,12 @@ flags:
   creeper_explosion:
     enabled: true
     change-cooldown: 0
-    default-value: false
+    default-value: true
   wither_explosion:
     enabled: true
     change-cooldown: 0
-    default-value: false
+    default-value: true
   phantom_spawning:
     enabled: true
     change-cooldown: 0
-    default-value: false
+    default-value: true
