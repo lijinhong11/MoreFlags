@@ -37,6 +37,7 @@ public class MoreFlagsAddon extends Addon {
     @Override
     public void onReload() {
         super.onReload();
+        saveConfig();
 
         settings = new Config<>(this, Settings.class).loadConfigObject();
 
@@ -55,12 +56,9 @@ public class MoreFlagsAddon extends Addon {
                     .mode(Flag.Mode.EXPERT)
                     .listener(listener)
                     .type(Flag.Type.SETTING)
-                    .defaultSetting(flagSet.getDefaultValue())
                     .cooldown(flagSet.getChangeCooldown())
                     .build();
             registerFlag(flag);
-
-            flag.setDefaultSetting(flagSet.getDefaultValue());
         }
     }
 }
