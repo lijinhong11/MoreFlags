@@ -1,10 +1,20 @@
-flags:
-  creeper_explosion:
-    enabled: true
-    change-cooldown: 0
-  wither_explosion:
-    enabled: true
-    change-cooldown: 0
-  phantom_spawning:
-    enabled: true
-    change-cooldown: 0
+#It can control creeper explosions.
+creeper_explosion:
+  enabled: true
+  change-cooldown: 0
+  default-value: true
+#It can control wither explosions.
+wither_explosion:
+  enabled: true
+  change-cooldown: 0
+  default-value: true
+#It can control phantom spawning.
+phantom_spawning:
+  enabled: true
+  change-cooldown: 0
+  default-value: true
+#It can control witch potion throwing.
+witch_potion_throwing:
+  enabled: true
+  change-cooldown: 0
+  default-value: true

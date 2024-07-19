@@ -14,8 +14,14 @@ public class FlagSetSerializer implements AdapterInterface<FlagSet, Map<String, 
     public FlagSet deserialize(Object o) {
         FlagSet flagSet = new FlagSet();
         if (o instanceof MemorySection ms) {
-            flagSet.setEnabled(ms.getBoolean("enabled"));
-            flagSet.setChangeCooldown(ms.getInt("change-cooldown"));
+            flagSet.setEnabled(ms.getBoolean("enabled", true));
+            flagSet.setChangeCooldown(ms.getInt("change-cooldown", 0));
+            flagSet.setDefaultValue(ms.getBoolean("default-value", true));
+        } else if (o instanceof Map<?, ?> m) {
+            Map<String, Object> map = (Map<String, Object>) m;
+            flagSet.setEnabled((boolean) map.getOrDefault("enabled", true));
+            flagSet.setChangeCooldown((int) map.getOrDefault("change-cooldown", 0));
+            flagSet.setDefaultValue((boolean) map.getOrDefault("default-value", true));
         }
         return flagSet;
     }
@@ -25,7 +31,8 @@ public class FlagSetSerializer implements AdapterInterface<FlagSet, Map<String, 
         if (o instanceof FlagSet fs) {
             boolean enabled = fs.isEnabled();
             int changeCooldown = fs.getChangeCooldown();
-            return Map.of("enabled", enabled, "change-cooldown", changeCooldown);
+            boolean defaultValue = fs.getDefaultValue();
+            return Map.of("enabled", enabled, "change-cooldown", changeCooldown, "default-value", defaultValue);
         } else {
             return null;
         }

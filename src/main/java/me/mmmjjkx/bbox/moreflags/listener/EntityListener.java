@@ -5,10 +5,13 @@ import me.mmmjjkx.bbox.moreflags.FlagNames;
 import me.mmmjjkx.bbox.moreflags.config.Settings;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Witch;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.entity.EntitySpawnEvent;
+import org.bukkit.event.entity.PotionSplashEvent;
+import org.bukkit.projectiles.ProjectileSource;
 import world.bentobox.bentobox.BentoBox;
 import world.bentobox.bentobox.api.flags.Flag;
 import world.bentobox.bentobox.database.objects.Island;
@@ -49,6 +52,16 @@ public class EntityListener implements Listener {
         EntityType et = en.getType();
         if (et == EntityType.PHANTOM) {
             if (settings.getPhantomSpawning().isEnabled() && !inIsland(en, FlagNames.PHANTOM_SPAWNING, true)) {
+                e.setCancelled(true);
+            }
+        }
+    }
+
+    @EventHandler
+    public void potionDrop(PotionSplashEvent e) {
+        ProjectileSource source = e.getPotion().getShooter();
+        if (source instanceof Witch witch) {
+            if (settings.getWitchPotionThrowing().isEnabled() && !inIsland(witch, FlagNames.WITCH_POTION_THROWING, true)) {
                 e.setCancelled(true);
             }
         }

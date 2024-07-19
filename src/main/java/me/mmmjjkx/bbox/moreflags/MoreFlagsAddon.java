@@ -17,11 +17,11 @@ public class MoreFlagsAddon extends Addon {
     @Override
     public void onEnable() {
         saveDefaultConfig();
+        saveConfig();
 
         settings = new Config<>(this, Settings.class).loadConfigObject();
 
-        Settings save = new Settings();
-        new Config<>(this, Settings.class).saveConfigObject(save);
+        new Config<>(this, Settings.class).saveConfigObject(settings);
 
         EntityListener entityListener = new EntityListener(settings);
 
@@ -32,6 +32,7 @@ public class MoreFlagsAddon extends Addon {
         registerFlagSet(FlagNames.CREEPER_EXPLOSION, Material.CREEPER_HEAD, settings.getCreeperExplosions(), entityListener);
         registerFlagSet(FlagNames.WITHER_EXPLOSION, Material.WITHER_SKELETON_SKULL, settings.getWitherExplosions(), entityListener);
         registerFlagSet(FlagNames.PHANTOM_SPAWNING, Material.PHANTOM_SPAWN_EGG, settings.getPhantomSpawning(), entityListener);
+        registerFlagSet(FlagNames.WITCH_POTION_THROWING, Material.SPLASH_POTION, settings.getWitchPotionThrowing(), entityListener);
     }
 
     @Override
@@ -41,8 +42,7 @@ public class MoreFlagsAddon extends Addon {
 
         settings = new Config<>(this, Settings.class).loadConfigObject();
 
-        Settings save = new Settings();
-        new Config<>(this, Settings.class).saveConfigObject(save);
+        new Config<>(this, Settings.class).saveConfigObject(settings);
     }
 
     @Override
@@ -57,6 +57,7 @@ public class MoreFlagsAddon extends Addon {
                     .listener(listener)
                     .type(Flag.Type.SETTING)
                     .cooldown(flagSet.getChangeCooldown())
+                    .defaultSetting(flagSet.getDefaultValue())
                     .build();
             registerFlag(flag);
         }

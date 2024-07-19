@@ -9,3 +9,6 @@ protection:
     phantom_spawning:
       name: 幻翼生成
       description: "&a允许&7/&c禁止 &a幻翼生成"
+    witch_potion_throwing:
+      name: 女巫药水投掷
+      description: "&a允许&7/&c禁止 &a女巫药水投掷"

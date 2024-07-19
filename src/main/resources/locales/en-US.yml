@@ -9,3 +9,6 @@ protection:
     phantom_spawning:
       name: Phantom spawning
       description: "&aAllow &7/ &c Prevent &aphantoms spawning"
+    witch_potion_throwing:
+      name: Witch potion throwing
+      description: "&aAllow &7/ &c Prevent &awitches throwing potions"
