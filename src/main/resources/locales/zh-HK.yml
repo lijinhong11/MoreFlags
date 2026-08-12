@@ -1,23 +1,30 @@
 protection:
   flags:
-    creeper_explosion:
+    CREEPER_EXPLOSION:
       name: 苦力怕爆炸
-      description: "&a允许&7/&c禁止 &a苦力怕爆炸破坏方块"
-    wither_explosion:
+      description: "&a允許&7/&c禁止 &a苦力怕爆炸破壞方塊"
+      hint: 苦力怕爆炸保護
+    WITHER_EXPLOSION:
       name: 凋零爆炸
-      description: "&a允许&7/&c禁止 &a凋零爆炸破坏方块"
-    phantom_spawning:
+      description: "&a允許&7/&c禁止 &a凋零爆炸破壞方塊"
+      hint: 凋零爆炸保護
+    PHANTOM_SPAWNING:
       name: 幻翼生成
-      description: "&a允许&7/&c禁止 &a幻翼生成"
-    witch_potion_throwing:
-      name: 女巫药水投掷
-      description: "&a允许&7/&c禁止 &a女巫药水投掷"
-    windcharge_launch:
-      name: 风弹发射
-      description: "&a允许&7/&c禁止 &a风弹发射"
-    ghast_fireball:
+      description: "&a允許&7/&c禁止 &a幻翼生成"
+      hint: 幻翼生成保護
+    WITCH_POTION_THROWING:
+      name: 女巫藥水投擲
+      description: "&a允許&7/&c禁止 &a女巫藥水投擲"
+      hint: 女巫藥水投擲保護
+    WINDCHARGE_LAUNCHING:
+      name: 風彈發射
+      description: "&a允許&7/&c禁止 &a風彈發射"
+      hint: 風彈發射保護
+    GHAST_FIREBALL:
       name: 惡魂火球
       description: "&a允許&7/&c禁止 &a惡魂火球破壞方塊"
-    blaze_fireball:
+      hint: 惡魂火球保護
+    BLAZE_FIREBALL:
       name: 烈焰人火球
       description: "&a允許&7/&c禁止 &a烈焰人火球破壞方塊"
+      hint: 烈焰人火球保護

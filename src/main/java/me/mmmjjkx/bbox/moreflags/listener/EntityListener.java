@@ -1,6 +1,6 @@
 package me.mmmjjkx.bbox.moreflags.listener;
 
-import lombok.ToString;
+import java.util.Optional;
 import me.mmmjjkx.bbox.moreflags.FlagNames;
 import me.mmmjjkx.bbox.moreflags.config.Settings;
 import org.bukkit.entity.*;
@@ -17,9 +17,6 @@ import world.bentobox.bentobox.database.objects.Island;
 import world.bentobox.bentobox.managers.FlagsManager;
 import world.bentobox.bentobox.managers.IslandsManager;
 
-import java.util.Optional;
-
-@ToString
 public class EntityListener implements Listener {
     private final Settings settings;
 
@@ -46,14 +43,12 @@ public class EntityListener implements Listener {
         EntityType et = en.getType();
         switch (et) {
             case CREEPER -> {
-                if (settings.getCreeperExplosions().isEnabled()
-                        && !isAllowed(en, FlagNames.CREEPER_EXPLOSION)) {
+                if (settings.getCreeperExplosions().isEnabled() && !isAllowed(en, FlagNames.CREEPER_EXPLOSION)) {
                     e.setCancelled(true);
                 }
             }
             case WITHER -> {
-                if (settings.getWitherExplosions().isEnabled()
-                        && !isAllowed(en, FlagNames.WITHER_EXPLOSION)) {
+                if (settings.getWitherExplosions().isEnabled() && !isAllowed(en, FlagNames.WITHER_EXPLOSION)) {
                     e.setCancelled(true);
                 }
             }
@@ -65,8 +60,7 @@ public class EntityListener implements Listener {
         Entity en = e.getEntity();
         EntityType et = en.getType();
         if (et == EntityType.PHANTOM) {
-            if (settings.getPhantomSpawning().isEnabled()
-                    && !isAllowed(en, FlagNames.PHANTOM_SPAWNING)) {
+            if (settings.getPhantomSpawning().isEnabled() && !isAllowed(en, FlagNames.PHANTOM_SPAWNING)) {
                 e.setCancelled(true);
             }
         }
@@ -76,8 +70,7 @@ public class EntityListener implements Listener {
     public void potionDrop(PotionSplashEvent e) {
         ProjectileSource source = e.getPotion().getShooter();
         if (source instanceof Witch witch) {
-            if (settings.getWitchPotionThrowing().isEnabled()
-                    && !isAllowed(witch, FlagNames.WITCH_POTION_THROWING)) {
+            if (settings.getWitchPotionThrowing().isEnabled() && !isAllowed(witch, FlagNames.WITCH_POTION_THROWING)) {
                 e.setCancelled(true);
             }
         }
@@ -87,8 +80,7 @@ public class EntityListener implements Listener {
     public void windcharge(ProjectileLaunchEvent e) {
         Projectile entity = e.getEntity();
         if (entity instanceof WindCharge && e.getEntity().getShooter() instanceof Player p) {
-            if (settings.getWindchargeLaunching().isEnabled() &&
-                    !isAllowed(p, FlagNames.WINDCHARGE_LAUNCHING)) {
+            if (settings.getWindchargeLaunching().isEnabled() && !isAllowed(p, FlagNames.WINDCHARGE_LAUNCHING)) {
                 e.setCancelled(true);
             }
         }
@@ -102,8 +94,7 @@ public class EntityListener implements Listener {
 
         if (flag.isPresent()) {
             Flag f = flag.get();
-            return island.map(value -> value.isAllowed(f))
-                    .orElseGet(() -> f.isSetForWorld(en.getWorld()));
+            return island.map(value -> value.isAllowed(f)).orElseGet(() -> f.isSetForWorld(en.getWorld()));
         }
 
         return true;

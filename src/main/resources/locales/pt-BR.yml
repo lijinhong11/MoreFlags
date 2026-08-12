@@ -1,23 +1,30 @@
 protection:
   flags:
-    creeper_explosion:
+    CREEPER_EXPLOSION:
       name: Explosões de Creeper
       description: "&aPermitir &7/&c Impedir &aexplosões de Creeper destruindo blocos"
-    wither_explosion:
+      hint: Explosões de Creeper protegidas
+    WITHER_EXPLOSION:
       name: Explosões de Wither
       description: "&aPermitir &7/&c Impedir &aexplosões de Wither destruindo blocos"
-    phantom_spawning:
+      hint: Explosões de Wither protegidas
+    PHANTOM_SPAWNING:
       name: Surgimento de Fantasmas
       description: "&aPermitir &7/&c Impedir &ao surgimento de Fantasmas"
-    witch_potion_throwing:
+      hint: Surgimento de Fantasmas protegido
+    WITCH_POTION_THROWING:
       name: Bruxas Arremessando Poções
       description: "&aPermitir &7/&c Impedir &abruxas arremessando poções"
-    windcharge_launch:
+      hint: Arremesso de poções por bruxas protegido
+    WINDCHARGE_LAUNCHING:
       name: Lançamento de Carga de Vento
-      description: "&aPermitir &7/&c Impedir &alançamento de Carga de Vento"
-    ghast_fireball:
+      description: "&aPermitir &7/&c Impedir &alançamento de Cargas de Vento"
+      hint: Lançamento de Cargas de Vento protegido
+    GHAST_FIREBALL:
       name: Bolas de fogo de Ghast
       description: "&aPermitir &7/&c Impedir &abolas de fogo de Ghast destruindo blocos"
-    blaze_fireball:
+      hint: Bolas de fogo de Ghast protegidas
+    BLAZE_FIREBALL:
       name: Bolas de fogo de Blaze
       description: "&aPermitir &7/&c Impedir &abolas de fogo de Blaze destruindo blocos"
+      hint: Bolas de fogo de Blaze protegidas

@@ -30,41 +30,13 @@ public class MoreFlagsAddon extends Addon {
     }
 
     private void registerFlags() {
-        registerFlagSet(
-                FlagNames.CREEPER_EXPLOSION,
-                Material.CREEPER_HEAD,
-                settings.getCreeperExplosions()
-        );
-        registerFlagSet(
-                FlagNames.WITHER_EXPLOSION,
-                Material.WITHER_SKELETON_SKULL,
-                settings.getWitherExplosions()
-        );
-        registerFlagSet(
-                FlagNames.PHANTOM_SPAWNING,
-                Material.PHANTOM_SPAWN_EGG,
-                settings.getPhantomSpawning()
-        );
-        registerFlagSet(
-                FlagNames.WITCH_POTION_THROWING,
-                Material.SPLASH_POTION,
-                settings.getWitchPotionThrowing()
-        );
-        registerFlagSet(
-                FlagNames.WINDCHARGE_LAUNCHING,
-                Material.WIND_CHARGE,
-                settings.getWindchargeLaunching()
-        );
-        registerFlagSet(
-                FlagNames.GHAST_FIREBALL,
-                Material.GHAST_SPAWN_EGG,
-                settings.getGhastFireball()
-        );
-        registerFlagSet(
-                FlagNames.BLAZE_FIREBALL,
-                Material.BLAZE_SPAWN_EGG,
-                settings.getBlazeFireball()
-        );
+        registerFlagSet(FlagNames.CREEPER_EXPLOSION, Material.CREEPER_HEAD, settings.getCreeperExplosions());
+        registerFlagSet(FlagNames.WITHER_EXPLOSION, Material.WITHER_SKELETON_SKULL, settings.getWitherExplosions());
+        registerFlagSet(FlagNames.PHANTOM_SPAWNING, Material.PHANTOM_SPAWN_EGG, settings.getPhantomSpawning());
+        registerFlagSet(FlagNames.WITCH_POTION_THROWING, Material.SPLASH_POTION, settings.getWitchPotionThrowing());
+        registerFlagSet(FlagNames.WINDCHARGE_LAUNCHING, Material.WIND_CHARGE, settings.getWindchargeLaunching());
+        registerFlagSet(FlagNames.GHAST_FIREBALL, Material.GHAST_SPAWN_EGG, settings.getGhastFireball());
+        registerFlagSet(FlagNames.BLAZE_FIREBALL, Material.BLAZE_SPAWN_EGG, settings.getBlazeFireball());
     }
 
     @Override

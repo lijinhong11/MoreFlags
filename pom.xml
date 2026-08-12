@@ -13,6 +13,7 @@
 
   <properties>
     <java.version>25</java.version>
+    <lombok.version>1.18.46</lombok.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <spotless.version>3.9.0</spotless.version>
   </properties>
@@ -26,6 +27,13 @@
         <configuration>
           <source>${java.version}</source>
           <target>${java.version}</target>
+          <annotationProcessorPaths>
+            <path>
+              <groupId>org.projectlombok</groupId>
+              <artifactId>lombok</artifactId>
+              <version>${lombok.version}</version>
+            </path>
+          </annotationProcessorPaths>
         </configuration>
       </plugin>
       <plugin>
@@ -47,7 +55,7 @@
         <version>${spotless.version}</version>
         <configuration>
           <java>
-            <googleJavaFormat/>
+            <palantirJavaFormat/>
             <importOrder/>
             <removeUnusedImports/>
             <trimTrailingWhitespace/>
@@ -102,7 +110,7 @@
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
-      <version>1.18.46</version>
+      <version>${lombok.version}</version>
       <scope>provided</scope>
     </dependency>
   </dependencies>
