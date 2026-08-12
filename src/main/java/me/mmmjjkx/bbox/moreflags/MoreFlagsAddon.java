@@ -5,7 +5,6 @@ import me.mmmjjkx.bbox.moreflags.config.FlagSet;
 import me.mmmjjkx.bbox.moreflags.config.Settings;
 import me.mmmjjkx.bbox.moreflags.listener.EntityListener;
 import org.bukkit.Material;
-import org.bukkit.event.Listener;
 import world.bentobox.bentobox.api.addons.Addon;
 import world.bentobox.bentobox.api.configuration.Config;
 import world.bentobox.bentobox.api.flags.Flag;
@@ -14,25 +13,58 @@ import world.bentobox.bentobox.api.flags.Flag;
 public class MoreFlagsAddon extends Addon {
     private Settings settings;
 
+    private EntityListener entityListener;
+
     @Override
     public void onEnable() {
         saveDefaultConfig();
         saveConfig();
 
-        settings = new Config<>(this, Settings.class).loadConfigObject();
+        this.settings = new Config<>(this, Settings.class).loadConfigObject();
 
-        new Config<>(this, Settings.class).saveConfigObject(settings);
+        this.entityListener = new EntityListener(settings);
 
-        EntityListener entityListener = new EntityListener(settings);
+        registerFlags();
 
-        registerFlags(entityListener);
+        getLogger().info("MoreFlags is enabled!");
     }
-    
-    private void registerFlags(EntityListener entityListener) {
-        registerFlagSet(FlagNames.CREEPER_EXPLOSION, Material.CREEPER_HEAD, settings.getCreeperExplosions(), entityListener);
-        registerFlagSet(FlagNames.WITHER_EXPLOSION, Material.WITHER_SKELETON_SKULL, settings.getWitherExplosions(), entityListener);
-        registerFlagSet(FlagNames.PHANTOM_SPAWNING, Material.PHANTOM_SPAWN_EGG, settings.getPhantomSpawning(), entityListener);
-        registerFlagSet(FlagNames.WITCH_POTION_THROWING, Material.SPLASH_POTION, settings.getWitchPotionThrowing(), entityListener);
+
+    private void registerFlags() {
+        registerFlagSet(
+                FlagNames.CREEPER_EXPLOSION,
+                Material.CREEPER_HEAD,
+                settings.getCreeperExplosions()
+        );
+        registerFlagSet(
+                FlagNames.WITHER_EXPLOSION,
+                Material.WITHER_SKELETON_SKULL,
+                settings.getWitherExplosions()
+        );
+        registerFlagSet(
+                FlagNames.PHANTOM_SPAWNING,
+                Material.PHANTOM_SPAWN_EGG,
+                settings.getPhantomSpawning()
+        );
+        registerFlagSet(
+                FlagNames.WITCH_POTION_THROWING,
+                Material.SPLASH_POTION,
+                settings.getWitchPotionThrowing()
+        );
+        registerFlagSet(
+                FlagNames.WINDCHARGE_LAUNCHING,
+                Material.WIND_CHARGE,
+                settings.getWindchargeLaunching()
+        );
+        registerFlagSet(
+                FlagNames.GHAST_FIREBALL,
+                Material.GHAST_SPAWN_EGG,
+                settings.getGhastFireball()
+        );
+        registerFlagSet(
+                FlagNames.BLAZE_FIREBALL,
+                Material.BLAZE_SPAWN_EGG,
+                settings.getBlazeFireball()
+        );
     }
 
     @Override
@@ -41,21 +73,21 @@ public class MoreFlagsAddon extends Addon {
         saveConfig();
 
         settings = new Config<>(this, Settings.class).loadConfigObject();
-
         new Config<>(this, Settings.class).saveConfigObject(settings);
     }
 
     @Override
     public void onDisable() {
+        getLogger().info("MoreFlags is disabled!");
     }
 
-    private void registerFlagSet(String id, Material icon, FlagSet flagSet, Listener listener) {
+    private void registerFlagSet(String id, Material icon, FlagSet flagSet) {
         if (flagSet.isEnabled()) {
             Flag.Builder builder = new Flag.Builder(id, icon);
             Flag flag = builder.addon(this)
-                    .mode(Flag.Mode.EXPERT)
-                    .listener(listener)
-                    .type(Flag.Type.SETTING)
+                    .mode(flagSet.getMode())
+                    .listener(entityListener)
+                    .type(flagSet.getType())
                     .cooldown(flagSet.getChangeCooldown())
                     .defaultSetting(flagSet.getDefaultValue())
                     .build();

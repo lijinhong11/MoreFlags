@@ -3,14 +3,13 @@ package me.mmmjjkx.bbox.moreflags.listener;
 import lombok.ToString;
 import me.mmmjjkx.bbox.moreflags.FlagNames;
 import me.mmmjjkx.bbox.moreflags.config.Settings;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Witch;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.entity.EntitySpawnEvent;
 import org.bukkit.event.entity.PotionSplashEvent;
+import org.bukkit.event.entity.ProjectileLaunchEvent;
 import org.bukkit.projectiles.ProjectileSource;
 import world.bentobox.bentobox.BentoBox;
 import world.bentobox.bentobox.api.flags.Flag;
@@ -31,15 +30,30 @@ public class EntityListener implements Listener {
     @EventHandler
     public void explosion(EntityExplodeEvent e) {
         Entity en = e.getEntity();
+        if (en instanceof Fireball fireball) {
+            if (fireball.getShooter() instanceof Ghast
+                    && settings.getGhastFireball().isEnabled()
+                    && !isAllowed(en, FlagNames.GHAST_FIREBALL)) {
+                e.setCancelled(true);
+            } else if (fireball.getShooter() instanceof Blaze
+                    && settings.getBlazeFireball().isEnabled()
+                    && !isAllowed(en, FlagNames.BLAZE_FIREBALL)) {
+                e.setCancelled(true);
+            }
+            return;
+        }
+
         EntityType et = en.getType();
         switch (et) {
             case CREEPER -> {
-                if (settings.getCreeperExplosions().isEnabled() && !inIsland(en, FlagNames.CREEPER_EXPLOSION, true)) {
+                if (settings.getCreeperExplosions().isEnabled()
+                        && !isAllowed(en, FlagNames.CREEPER_EXPLOSION)) {
                     e.setCancelled(true);
                 }
             }
             case WITHER -> {
-                if (settings.getWitherExplosions().isEnabled() && !inIsland(en, FlagNames.WITHER_EXPLOSION, true)) {
+                if (settings.getWitherExplosions().isEnabled()
+                        && !isAllowed(en, FlagNames.WITHER_EXPLOSION)) {
                     e.setCancelled(true);
                 }
             }
@@ -51,7 +65,8 @@ public class EntityListener implements Listener {
         Entity en = e.getEntity();
         EntityType et = en.getType();
         if (et == EntityType.PHANTOM) {
-            if (settings.getPhantomSpawning().isEnabled() && !inIsland(en, FlagNames.PHANTOM_SPAWNING, true)) {
+            if (settings.getPhantomSpawning().isEnabled()
+                    && !isAllowed(en, FlagNames.PHANTOM_SPAWNING)) {
                 e.setCancelled(true);
             }
         }
@@ -61,21 +76,36 @@ public class EntityListener implements Listener {
     public void potionDrop(PotionSplashEvent e) {
         ProjectileSource source = e.getPotion().getShooter();
         if (source instanceof Witch witch) {
-            if (settings.getWitchPotionThrowing().isEnabled() && !inIsland(witch, FlagNames.WITCH_POTION_THROWING, true)) {
+            if (settings.getWitchPotionThrowing().isEnabled()
+                    && !isAllowed(witch, FlagNames.WITCH_POTION_THROWING)) {
                 e.setCancelled(true);
             }
         }
     }
 
-    private boolean inIsland(Entity en, String id, boolean destExpression) {
+    @EventHandler
+    public void windcharge(ProjectileLaunchEvent e) {
+        Projectile entity = e.getEntity();
+        if (entity instanceof WindCharge && e.getEntity().getShooter() instanceof Player p) {
+            if (settings.getWindchargeLaunching().isEnabled() &&
+                    !isAllowed(p, FlagNames.WINDCHARGE_LAUNCHING)) {
+                e.setCancelled(true);
+            }
+        }
+    }
+
+    private boolean isAllowed(Entity en, String id) {
         IslandsManager im = BentoBox.getInstance().getIslands();
         Optional<Island> island = im.getIslandAt(en.getLocation());
         FlagsManager fm = BentoBox.getInstance().getFlagsManager();
         Optional<Flag> flag = fm.getFlag(id);
+
         if (flag.isPresent()) {
             Flag f = flag.get();
-            return island.map(value -> value.isAllowed(f) == destExpression).orElseGet(() -> f.isSetForWorld(en.getWorld()));
+            return island.map(value -> value.isAllowed(f))
+                    .orElseGet(() -> f.isSetForWorld(en.getWorld()));
         }
-        return destExpression;
+
+        return true;
     }
 }

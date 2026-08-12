@@ -1,27 +1,30 @@
 package me.mmmjjkx.bbox.moreflags.config;
 
-import org.bukkit.configuration.MemorySection;
+import org.bukkit.configuration.ConfigurationSection;
+import world.bentobox.bentobox.api.flags.Flag;
 import world.bentobox.bentobox.database.objects.adapters.AdapterInterface;
 
 import java.util.Map;
 
 public class FlagSetSerializer implements AdapterInterface<FlagSet, Map<String, Object>> {
-
     public FlagSetSerializer() {
     }
 
     @Override
     public FlagSet deserialize(Object o) {
         FlagSet flagSet = new FlagSet();
-        if (o instanceof MemorySection ms) {
-            flagSet.setEnabled(ms.getBoolean("enabled", true));
-            flagSet.setChangeCooldown(ms.getInt("change-cooldown", 0));
-            flagSet.setDefaultValue(ms.getBoolean("default-value", true));
+        if (o instanceof ConfigurationSection cs) {
+            flagSet.setEnabled(cs.getBoolean("enabled", true));
+            flagSet.setChangeCooldown(cs.getInt("change-cooldown", 0));
+            flagSet.setDefaultValue(cs.getBoolean("default-value", true));
+            flagSet.setMode(Flag.Mode.valueOf(cs.getString("mode", Flag.Mode.EXPERT.name())));
         } else if (o instanceof Map<?, ?> m) {
             Map<String, Object> map = (Map<String, Object>) m;
             flagSet.setEnabled((boolean) map.getOrDefault("enabled", true));
             flagSet.setChangeCooldown((int) map.getOrDefault("change-cooldown", 0));
             flagSet.setDefaultValue((boolean) map.getOrDefault("default-value", true));
+            flagSet.setMode(
+                    Flag.Mode.valueOf((String) map.getOrDefault("mode", Flag.Mode.EXPERT.name())));
         }
         return flagSet;
     }
@@ -32,7 +35,12 @@ public class FlagSetSerializer implements AdapterInterface<FlagSet, Map<String, 
             boolean enabled = fs.isEnabled();
             int changeCooldown = fs.getChangeCooldown();
             boolean defaultValue = fs.getDefaultValue();
-            return Map.of("enabled", enabled, "change-cooldown", changeCooldown, "default-value", defaultValue);
+            String mode = fs.getMode().name();
+            return Map.of(
+                    "enabled", enabled,
+                    "change-cooldown", changeCooldown,
+                    "default-value", defaultValue,
+                    "mode", mode);
         } else {
             return null;
         }

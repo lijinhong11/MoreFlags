@@ -12,3 +12,12 @@ protection:
     witch_potion_throwing:
       name: Witch potion throwing
       description: "&aAllow &7/ &c Prevent &awitches throwing potions"
+    windcharge_launch:
+      name: WindCharge Launch
+      description: "&aAllow &7/&c Prevent &aWindCharge Launch"
+    ghast_fireball:
+      name: Ghast fireballs
+      description: "&aAllow &7/&c Prevent &aghast fireballs destroying blocks"
+    blaze_fireball:
+      name: Blaze fireballs
+      description: "&aAllow &7/&c Prevent &ablaze fireballs destroying blocks"

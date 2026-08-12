@@ -12,3 +12,12 @@ protection:
     witch_potion_throwing:
       name: 女巫药水投掷
       description: "&a允许&7/&c禁止 &a女巫药水投掷"
+    windcharge_launch:
+      name: 风弹发射
+      description: "&a允许&7/&c禁止 &a风弹发射"
+    ghast_fireball:
+      name: 恶魂火球
+      description: "&a允许&7/&c禁止 &a恶魂火球破坏方块"
+    blaze_fireball:
+      name: 烈焰人火球
+      description: "&a允许&7/&c禁止 &a烈焰人火球破坏方块"

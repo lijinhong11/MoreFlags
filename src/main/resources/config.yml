@@ -1,20 +1,52 @@
-#It can control creeper explosions.
+# It can control creeper explosions.
 creeper_explosion:
   enabled: true
   change-cooldown: 0
   default-value: true
-#It can control wither explosions.
+  mode: EXPERT
+
+# It can control wither explosions.
 wither_explosion:
   enabled: true
   change-cooldown: 0
   default-value: true
-#It can control phantom spawning.
+  mode: EXPERT
+
+# It can control phantom spawning.
 phantom_spawning:
   enabled: true
   change-cooldown: 0
   default-value: true
-#It can control witch potion throwing.
+  mode: EXPERT
+
+# It can control witch potion throwing.
+# Added since 1.1.0
 witch_potion_throwing:
   enabled: true
   change-cooldown: 0
   default-value: true
+  mode: EXPERT
+
+# It can control windcharge launching.
+# Added since 2.0.0
+windcharge_launching:
+  enabled: true
+  change-cooldown: 0
+  default-value: true
+  mode: EXPERT
+
+# It can control ghast fireballs.
+# Added since 2.0.0
+ghast_fireball:
+  enabled: true
+  change-cooldown: 0
+  default-value: true
+  mode: EXPERT
+
+# It can control blaze fireballs.
+# Added since 2.0.0
+blaze_fireball:
+  enabled: true
+  change-cooldown: 0
+  default-value: true
+  mode: EXPERT
