@@ -1,5 +1,6 @@
 package me.mmmjjkx.bbox.moreflags.config;
 
+import io.papermc.paper.world.flag.FeatureFlagSetHolder;
 import lombok.Getter;
 import lombok.Setter;
 import me.mmmjjkx.bbox.moreflags.FlagNames;
@@ -47,4 +48,9 @@ public class Settings implements ConfigObject {
     @ConfigComment("It can control blaze fireballs.")
     @Adapter(FlagSetSerializer.class)
     private FlagSet blazeFireball;
+
+    @ConfigEntry(path = FlagNames.GLOWSQUID_SPAWNING, since = "2.0.2")
+    @ConfigComment("It can control glow squid spawning.")
+    @Adapter(FlagSetSerializer.class)
+    private FlagSet glowsquidSpawning;
 }

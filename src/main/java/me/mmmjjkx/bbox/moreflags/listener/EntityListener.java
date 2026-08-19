@@ -64,6 +64,12 @@ public class EntityListener implements Listener {
                 e.setCancelled(true);
             }
         }
+
+        if (et == EntityType.GLOW_SQUID) {
+            if (settings.getGlowsquidSpawning().isEnabled() && !isAllowed(en, FlagNames.GLOWSQUID_SPAWNING)) {
+                e.setCancelled(true);
+            }
+        }
     }
 
     @EventHandler

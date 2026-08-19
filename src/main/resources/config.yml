@@ -57,3 +57,13 @@ blaze_fireball:
   default-value: true
   mode: EXPERT
   type: SETTING
+
+
+# It can control glow squid spawning.
+# Added since 2.0.2
+glowsquid_spawning:
+  enabled: true
+  change-cooldown: 0
+  default-value: true
+  mode: EXPERT
+  type: SETTING
