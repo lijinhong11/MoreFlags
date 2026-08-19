@@ -1,6 +1,6 @@
 name: MoreFlags
 main: me.mmmjjkx.bbox.moreflags.MoreFlagsAddon
 version: "${project.version}"
-api-version: 2.4.0
+api-version: 3.7.0
 authors: mmmjjkx
 description: Adds more flags to the game mode addon.

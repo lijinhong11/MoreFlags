@@ -1,30 +1,30 @@
 protection:
   flags:
-    CREEPER_EXPLOSION:
+    creeper_explosion:
       name: Creeper explosions
       description: "&aAllow &7/&c Prevent &acreeper explosions destroying blocks"
       hint: Creeper explosions protected
-    WITHER_EXPLOSION:
+    wither_explosion:
       name: Wither explosions
       description: "&aAllow &7/&c Prevent &awither explosions destroying blocks"
       hint: Wither explosions protected
-    PHANTOM_SPAWNING:
+    phantom_spawning:
       name: Phantom spawning
       description: "&aAllow &7/&c Prevent &aphantoms spawning"
       hint: Phantom spawning protected
-    WITCH_POTION_THROWING:
+    witch_potion_throwing:
       name: Witch potion throwing
       description: "&aAllow &7/&c Prevent &awitches throwing potions"
       hint: Witch potion throwing protected
-    WINDCHARGE_LAUNCHING:
+    windcharge_launching:
       name: Wind Charge launching
       description: "&aAllow &7/&c Prevent &aWind Charges launching"
       hint: Wind Charge launching protected
-    GHAST_FIREBALL:
+    ghast_fireball:
       name: Ghast fireballs
       description: "&aAllow &7/&c Prevent &aghast fireballs destroying blocks"
       hint: Ghast fireballs protected
-    BLAZE_FIREBALL:
+    blaze_fireball:
       name: Blaze fireballs
       description: "&aAllow &7/&c Prevent &ablaze fireballs destroying blocks"
       hint: Blaze fireballs protected
